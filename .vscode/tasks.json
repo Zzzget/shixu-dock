@@ -1,0 +1,28 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "拾序 · 启动 dev:debug（终端）",
+      "type": "shell",
+      "command": "npm run dev:debug",
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "拾序 · 启动纯前端 dev:web",
+      "type": "shell",
+      "command": "npm run dev:web",
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "拾序 · 类型注释检查",
+      "type": "shell",
+      "command": "npm run lint:types",
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    }
+  ]
+}

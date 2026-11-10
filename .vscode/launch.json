@@ -1,0 +1,38 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "拾序 · 附加主进程 (9229)",
+      "type": "node",
+      "request": "attach",
+      "address": "127.0.0.1",
+      "port": 9229,
+      "restart": true,
+      "cwd": "${workspaceFolder}",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "拾序 · 附加渲染进程 (9223)",
+      "type": "pwa-chrome",
+      "request": "attach",
+      "address": "127.0.0.1",
+      "port": 9223,
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true
+    },
+    {
+      "name": "拾序 · 调试终端运行测试",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm test",
+      "cwd": "${workspaceFolder}"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "拾序 · 主进程 + 前端同时调试",
+      "configurations": ["拾序 · 附加主进程 (9229)", "拾序 · 附加渲染进程 (9223)"],
+      "stopAll": true
+    }
+  ]
+}

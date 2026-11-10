@@ -1,0 +1,73 @@
+{
+  "name": "shixu-dock",
+  "productName": "拾序",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Windows 本地程序坞与项目快捷启动器",
+  "main": "electron/main.cjs",
+  "author": "",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "node scripts/dev.cjs",
+    "dev:web": "vite --host 127.0.0.1",
+    "dev:debug": "node scripts/dev.cjs --debug",
+    "build": "npm run lint && tsc --noEmit && vite build",
+    "start": "electron .",
+    "preview": "vite preview --host 127.0.0.1",
+    "lint": "npm run lint:types && npm run lint:modules && npm run lint:eslint",
+    "lint:types": "node scripts/check-type-comments.cjs",
+    "lint:modules": "node scripts/check-frontend-modules.cjs",
+    "lint:eslint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "node --test tests/core.test.cjs tests/type-comments.test.cjs tests/frontend-modules.test.cjs && npm run lint",
+    "test:desktop": "node scripts/smoke.cjs",
+    "pack": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder --win nsis"
+  },
+  "build": {
+    "appId": "local.shixu.dock",
+    "productName": "拾序",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "asar": true,
+    "win": {
+      "target": "nsis",
+      "executableName": "shixu-dock",
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": false
+    }
+  },
+  "dependencies": {
+    "lucide-react": "^1.69.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@playwright/test": "^1.64.1",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.2.1",
+    "electron": "^45.2.3",
+    "electron-builder": "^26.18.0",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^16.5.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.72.2",
+    "vite": "^8.3.6"
+  }
+}
